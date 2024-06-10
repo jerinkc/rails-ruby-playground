@@ -1,24 +1,21 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Another way to get records where models associated with has-many-through.
 
-Things you may want to cover:
+# Reference
 
-* Ruby version
+[https://coderwall.com/p/9xk6ra/rails-filter-using-join-model-on-has_many-through](https://coderwall.com/p/9xk6ra/rails-filter-using-join-model-on-has_many-through)
 
-* System dependencies
+# Content
 
-* Configuration
+In a Course - Enrollment - Student model, we can get all students who have passed(grade > 70) using the AR query:
 
-* Database creation
+```
+  course = Course.first
+  course.students.merge(Enrollment.passed)
+```
 
-* Database initialization
+The `merge` will perform intersect operation between `course.students` and `Enrollment.passed`.
 
-* How to run the test suite
+# Additional Info
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Seed file available for records creation
