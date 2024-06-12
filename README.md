@@ -29,6 +29,14 @@ The above code will generate a model Person for the following conditions,
             Emily         Jack
 ```
 
+# When to use
+
+- Hierarchical relationships: You need to model a hierarchical relationship between objects of the same class, such as a tree-like structure (e.g., a family tree where a person can have parents, children, and grandchildren).
+
+- Recursive relationships: You need to model a recursive relationship where an object can have multiple parents or children of the same class (e.g., a person can have multiple parents, children, and grandchildren).
+
+- Dynamic relationships: You need to model relationships that can change dynamically, such as a family tree where a person's relationships to their parents, children, and grandchildren can change over time (e.g., a person can get married and have children, or a person's parents can pass away).
+
 # Files
 
 - models/person
