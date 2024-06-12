@@ -1,24 +1,35 @@
-# README
+self-referential association - model which has a relationship with itself.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This type of association is commonly used in scenarios like hierarchical structures or parent/children or friendship model.
 
-Things you may want to cover:
+# content
 
-* Ruby version
+```
+class Person < ApplicationRecord
+  belongs_to :parent, class_name: 'Person', optional: true
+  has_many :children, class_name: 'Person', foreign_key: 'parent_id'
+  has_many :grandchildren, through: :children, source: :children
+end
+```
 
-* System dependencies
+The above code will generate a model Person for the following conditions,
 
-* Configuration
+- A Person can be a parent, child, or grandchild, depending on their relationships with other persons.
+- A person's parent association refers to the person who is their parent.
+- A person's children association refers to the persons who are their children.
+- A person's grandchildren association refers to the persons who are their grandchildren (i.e., the children of their children).
 
-* Database creation
+```
+                    John
+                     / \
+                    /   \
+                Mary    David
+                /         \
+               /           \
+            Emily         Jack
+```
 
-* Database initialization
+# Files
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- models/person
+- db/seeds
